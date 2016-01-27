@@ -1,4 +1,3 @@
-# neo4j-event-console-content-pack
 # Neo4j Demo Content Pack
 
 Graylog Content Pack which demonstrates advanced log management use cases with Neo4j graph database integration
