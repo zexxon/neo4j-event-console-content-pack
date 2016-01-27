@@ -1,0 +1,103 @@
+{
+  "id" : null,
+  "name" : "Graphlog Demo Content Pack",
+  "description" : "This is a demonstration content pack.\r\n",
+  "category" : "Demo Content Pack",
+  "inputs" : [ {
+    "title" : "mysql.graylog.org",
+    "configuration" : {
+      "sleep" : 25,
+      "override_source" : "",
+      "source" : "mysql.graylog.org",
+      "sleep_deviation" : 30,
+      "throttling_allowed" : true
+    },
+    "type" : "org.graylog2.inputs.random.FakeHttpMessageInput",
+    "global" : false,
+    "extractors" : [ ],
+    "static_fields" : { }
+  }, {
+    "title" : "GELF",
+    "configuration" : {
+      "override_source" : "",
+      "recv_buffer_size" : 262144,
+      "bind_address" : "0.0.0.0",
+      "port" : 12201
+    },
+    "type" : "org.graylog2.inputs.gelf.udp.GELFUDPInput",
+    "global" : false,
+    "extractors" : [ ],
+    "static_fields" : { }
+  }, {
+    "title" : "crm.graylog.org",
+    "configuration" : {
+      "sleep" : 25,
+      "override_source" : "",
+      "source" : "crm.graylog.org",
+      "sleep_deviation" : 30,
+      "throttling_allowed" : true
+    },
+    "type" : "org.graylog2.inputs.random.FakeHttpMessageInput",
+    "global" : false,
+    "extractors" : [ ],
+    "static_fields" : {
+      "dependency" : "mysql.graylog.org"
+    }
+  }, {
+    "title" : "www.graylog.org",
+    "configuration" : {
+      "sleep" : 25,
+      "override_source" : "",
+      "source" : "www.graylog.org",
+      "sleep_deviation" : 30,
+      "throttling_allowed" : true
+    },
+    "type" : "org.graylog2.inputs.random.FakeHttpMessageInput",
+    "global" : false,
+    "extractors" : [ ],
+    "static_fields" : {
+      "dependency" : "marketplace.graylog.org"
+    }
+  }, {
+    "title" : "marketplace.graylog.org",
+    "configuration" : {
+      "sleep" : 25,
+      "override_source" : "",
+      "source" : "marketplace.graylog.org",
+      "sleep_deviation" : 30
+    },
+    "type" : "org.graylog2.inputs.random.FakeHttpMessageInput",
+    "global" : false,
+    "extractors" : [ ],
+    "static_fields" : {
+      "dependency" : "mysql.graylog.org"
+    }
+  } ],
+  "streams" : [ {
+    "id" : "568dc3398de28fb6a38026c4",
+    "title" : "Web Application Logs",
+    "description" : "Web Application Logs",
+    "disabled" : true,
+    "outputs" : [ "568dc3098de28fb6a3802691" ],
+    "stream_rules" : [ {
+      "type" : "PRESENCE",
+      "field" : "dependency",
+      "value" : "",
+      "inverted" : false
+    } ]
+  } ],
+  "outputs" : [ {
+    "id" : "568dc3098de28fb6a3802691",
+    "title" : "Web Application Service Graph",
+    "type" : "org.graylog.plugins.outputs.neo4j.Neo4jOutput",
+    "configuration" : {
+      "neo4j_query" : "MERGE (dependency:DEPENDANT { dependency: '${dependency}'})\nON CREATE SET dependency.firstSeen = '${ingest_time}', dependency.firstSeenepoch = '${ingest_time_epoch}', dependency.count = 1\nON MATCH SET dependency.lastSeen = '${ingest_time}', dependency.lastSeenepoch = '${ingest_time_epoch}' ,dependency.count = dependency.count + 1\nMERGE (source:HOST { address: '${source}'})\nON CREATE SET source.firstSeen = '${ingest_time}', source.firstSeenepoch = '${ingest_time_epoch}', source.count = 1, source.last_response_code = '${http_response_code}'\nON MATCH SET source.lastSeen = '${ingest_time}', source.lastSeenepoch = '${ingest_time_epoch}',source.count = source.count + 1, source.last_response_code = '${http_response_code}'\nMERGE (minute:MINUTE { time: '${minute}'})\nON CREATE SET minute.firstSeen = '${ingest_time}', minute.firstSeenepoch = '${ingest_time_epoch}',minute.count = 1\nON MATCH SET minute.lastSeen = '${ingest_time}',minute.lastSeenepoch = '${ingest_time_epoch}', minute.count = minute.count + 1\nMERGE (source)-[:TIME]->(minute)\nCREATE UNIQUE (dependency)-[:TIME]->(minute)\nCREATE UNIQUE (source)-[:DEPENDS]->(dependency)",
+      "neo4j_startup_query" : "CREATE INDEX ON :HOST(address)",
+      "neo4j_user" : "neo4j",
+      "neo4j_password" : "grayl0g",
+      "neo4j_url" : "http://localhost:7474/db/data/"
+    }
+  } ],
+  "dashboards" : [ ],
+  "grok_patterns" : [ ]
+}
