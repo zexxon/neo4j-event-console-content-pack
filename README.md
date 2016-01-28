@@ -16,8 +16,7 @@ Neo4j graph database integration
 
 ##### **Note:** Ensure you create a unique constraints on all nodes otherwise you may see duplicate nodes (due to the multithreaded nature of Neo4j).
 
-Graylog & Neo4j Setup
----------------------
+**Graylog & Neo4j Setup**
 
 For a quick-start Neo4j can be started as a single instance. S
 
@@ -25,20 +24,20 @@ imply download the Neo4j community edition suitable for your operating system.
 
 As an example we install and start Neo4j on a Ubuntu system:
 
-**Install Java 8 **
+**Install Java 8**
 
-`$ sudo add-apt-repository ppa:webupd8team/java `
+`$ sudo add-apt-repository ppa:webupd8team/java`
 
-`$ sudo apt-get update `
+`$ sudo apt-get update`
 
 `$ sudo apt-get install oracle-java8-installer`
 
 **Download and start Neo4**j
 
 `$ wget -O neo4j-community-2.3.1-unix.tar.gz \
-http://neo4j.com/artifact.php?name=neo4j-community-2.3.1-unix.tar.gz `
+http://neo4j.com/artifact.php?name=neo4j-community-2.3.1-unix.tar.gz`
 
-`$ tar xzvf neo4j-community-2.3.1-unix.tar.gz `
+`$ tar xzvf neo4j-community-2.3.1-unix.tar.gz`
 
 `$ cd neo4j-community-2.3.1/ $ ./bin/neo4j console`
 
@@ -56,7 +55,7 @@ To make the server listen on all network interfaces edit
 
 The next step is to install the Neo4J output plugin on your Graylog instance. If
 you are using one of our pre-configured appliances copy the plugin to
-`/opt/graylog/plugin `
+`/opt/graylog/plugin`
 
 `$ wget
 https://github.com/mariussturm/graylog-plugin-output-neo4j/releases/download/1.0.0/plugin-output-neo4j-1.0.0.jar
