@@ -16,7 +16,8 @@ Neo4j graph database integration
 
 ##### **Note:** Ensure you create a unique constraints on all nodes otherwise you may see duplicate nodes (due to the multithreaded nature of Neo4j).
 
-**Graylog & Neo4j Setup**
+Graylog & Neo4j Setup
+---------------------
 
 For a quick-start Neo4j can be started as a single instance. S
 
