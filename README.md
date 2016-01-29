@@ -81,7 +81,7 @@ occurrence (default user/pass: neo4j/neo4j).
 A look into the built-in Neo4j web interface shows the results. A query like
 `MATCH (n) RETURN n;` returns all `user_id` connected to the test web server.
 
-![](<https://github.com/zexxon/neo4j-event-console-content-pack/images/simple-dependency-chart.png>)
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/simple-dependency-chart.png>)
 
 Advanced Demo
 -------------
@@ -101,23 +101,23 @@ Once you have installed the content pack and updated your Neo4j output
 configuration, you should start seeing messages like the following appear in
 your Graylog instance:
 
-![](<https://github.com/zexxon/neo4j-event-console-content-pack/images/new-random-http-message-generator.png>)
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/new-random-http-message-generator.png>)
 
 In Neo4j you could see something like the following:
 
-![](<https://github.com/zexxon/neo4j-event-console-content-pack/images/time-bucket-graph.png>)
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/time-bucket-graph.png>)
 
 Now we can use a simpler query in the output plugin, based on dependencies only:
 
-![](<https://github.com/zexxon/neo4j-event-console-content-pack/images/dependency-graph.png>)
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/dependency-graph.png>)
 
  
 
 ### Simple read only event console within Neo4j
 
-![](<https://github.com/zexxon/neo4j-event-console-content-pack/images/neo4j-event-console.png>)
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/neo4j-event-console.png>)
 
-![](<https://github.com/zexxon/neo4j-event-console-content-pack/images/neo4j-event-console-2.png>)
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/neo4j-event-console-2.png>)
 
 The above console was built using the following Cypher query in Graylog.
 
