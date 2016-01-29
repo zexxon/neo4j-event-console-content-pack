@@ -2,7 +2,7 @@ Neo4j Demo Content Pack
 =======================
 
 Graylog Content Pack which demonstrates advanced log management use cases with
-Neo4j graph database integration
+Neo4j graph database integration. This content pack is best served with the new random message generator found in Graylog 2.0 and newer versions. 
 
 -   Time Buckets Relationships
 
@@ -19,9 +19,9 @@ Neo4j graph database integration
 Graylog & Neo4j Setup
 ---------------------
 
-For a quick-start Neo4j can be started as a single instance. S
+For a quick-start Neo4j can be started as a single instance. 
 
-imply download the Neo4j community edition suitable for your operating system.
+Simply download the Neo4j community edition suitable for your operating system.
 
 As an example we install and start Neo4j on a Ubuntu system:
 
@@ -86,17 +86,14 @@ A look into the built-in Neo4j web interface shows the results. A query like
 Advanced Demo
 -------------
 
-You will need an updated Random HTTP Message Generator input , which is
-available in the Graylog master branch and will be going into the 2.0 release.
+You will need to be running Graylog 2.0 or newer to run through the advanced demo. 
 
 -   Make sure you have the Neo4j output plugin installed
 
 -   Download and install the demo content pack
 
 -   Configure the Neo4j Host/IP and credentials on the output source
-
- 
-
+   
 Once you have installed the content pack and updated your Neo4j output
 configuration, you should start seeing messages like the following appear in
 your Graylog instance:
