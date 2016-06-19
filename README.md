@@ -67,11 +67,13 @@ A simple example To test the setup we can start with a simple graph. Graylog
 ships with a build-in random log generate that simulates a HTTP server. To
 visualize the incoming connections of this fictitious web server we first create
 the input:
+![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/random-message-generator.png>)
 
 Only messages coming from this input should be represented in the graph. To
 identify each connection we create a relationships between the `user_id` of a
 connection and the HTTP server `example.org`. To filter the right messages we
 create a new stream with the following rules:
+![](https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/streams-config.png>)
 
 Now the Neo4j output can be attached to the stream. The default Cypher query is
 already made for this example and can be adopted. Only the URL to the Neo4j
