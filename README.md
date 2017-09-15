@@ -102,7 +102,7 @@ your Graylog instance:
 
 ![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/new-random-http-message-generator.png>)
 
-In Neo4j you could see something like the following:
+In Neo4j you should see something like the following:
 
 ![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/time-bucket-graph.png>)
 
