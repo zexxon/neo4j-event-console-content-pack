@@ -64,7 +64,7 @@ $ sudo cp plugin-output-neo4j-1.0.0.jar /opt/graylog/plugin $ sudo graylog-ctl
 restart graylog-server`
 
 A simple example To test the setup we can start with a simple graph. Graylog
-ships with a build-in random log generate that simulates a HTTP server. To
+ships with a built-in random log generate that simulates a HTTP server. To
 visualize the incoming connections of this fictitious web server we first create
 the input:
 ![](<https://github.com/zexxon/neo4j-event-console-content-pack/blob/master/images/random-message-generator.png>)
@@ -120,7 +120,7 @@ Now we can use a simpler query in the output plugin, based on dependencies only:
 
 The above console was built using the following Cypher query in Graylog.
 
-###### **Note:** The Cypher query below is dependent on a newer version of the RandomHTTPMessageGenerator input plugin. which will be included in the upcoming Graylog 2.0 release.
+###### **Note:** The Cypher query below is dependent on the Graylog 2.0 and higher version of the RandomHTTPMessageGenerator input plugin.
 
 `MERGE (dependency:DEPENDANT { dependency: ‘${dependency}’}) ON CREATE SET
 dependency.firstSeen = ‘${ingest_time}’, dependency.firstSeenepoch =
